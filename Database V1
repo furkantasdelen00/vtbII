@@ -1,0 +1,29 @@
+create database vtbII
+use vtbII
+
+
+create table CITIES(
+CITYID int identity(1,1) primary key,
+CITY nvarchar(50));
+
+create table DISTRICTS(
+DISTRICTID int identity(1,1) primary key,
+DISTRICT nvarchar(50),
+CITYID int,
+FOREIGN KEY (CITYID) REFERENCES CITIES(CITYID),
+);
+
+
+create table CUSTOMERS(
+ID int identity(1,1) primary key,
+NAMESURNAME nvarchar(50),
+TCNUMBER nvarchar(50),
+GENDER nvarchar(1),
+EMAIL nvarchar(100),
+BIRTHDATE date,
+CITYID int,
+DISTRICTID int,
+FOREIGN KEY (CITYID) REFERENCES CITIES(CITYID),
+FOREIGN KEY (DISTRICTID) REFERENCES DISTRICTS(DISTRICTID),
+TELNR1 nvarchar(50),
+TELNR2 nvarchar(50) );
